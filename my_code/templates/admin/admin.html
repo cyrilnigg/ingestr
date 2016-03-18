@@ -1,0 +1,27 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+  <p>
+  Current active cases. Click on the case name to see the list of custodians.
+  </p>
+  <table  class="table table-bordered table-striped">
+    <thead>
+      <th>Case name</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Custodian count</th>
+    </thead>
+    <tbody>
+    {% for case in cases %}
+      <tr>
+        <th><a href="{{ url_for('admin.edit', slug=case.slug) }}">{{ case.name }}</a></th>
+        <td>{{ case.created_at.strftime('%Y-%m-%d') }}</td>
+        <td>{{ case.created_at.strftime('%Y-%m-%d') }}</td>
+        <td>4</td>
+      </tr>
+    {% endfor %}
+
+
+    </tbody>
+  </table>
+{% endblock %}
